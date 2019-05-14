@@ -1,0 +1,526 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <conio.h>
+#include <windows.h>
+#include<stdlib.h>
+
+using namespace std;
+
+void input();
+void writefile();
+void search();
+void output();
+
+struct pasien{
+ string No;
+ string NamaLengkap;								
+ string Registrasi;	
+ string waktu;		
+}pasienData;			
+
+
+struct poli
+{
+ string NamaPoli;
+ string NamaDokter;
+ string NamaPasien;
+ string Registrasi;
+ string Waktu;
+
+}poli[50];
+
+struct date{
+	   int bulan;
+	   int hari;
+	   int tahun;
+	   };
+ struct account {
+	int number;
+	char name[100];
+	int acct_no;
+	float mobile_no;
+	char street[100];
+	char city[100];
+	char acct_type;
+	float oldbalance;
+	float newbalance;
+	float payment;
+	struct date lastpayment;
+  }customer;
+  int tl,sl,ts;
+int main()
+{
+
+	int i=0,j;
+	char pilihan;
+	string temukan;
+	string cari;
+	int delay;
+	while(1){
+		
+		system("cls");
+		cout<<"====================================="<<endl;
+		cout<<"Aplikasi Pendaftaran Puskesmas"<<endl;
+		cout<<"====================================="<<endl;
+		cout<<"1. Data Pasien"<<endl;
+		cout<<"2. Data Poli"<<endl;
+		cout<<"3. Transaksi Pendaftaran"<<endl;
+		cout<<"0. Keluar"<<endl;
+		cout<<"Opsi Pilihan : ";
+		cin>>pilihan;
+		
+		system("cls");
+		switch(pilihan){
+			case '1' : {
+		while(1)
+		{
+		system("cls");
+		cout<<"===================================="<<endl;
+		cout<<"Data Pasien					"<<endl;
+		cout<<"===================================="<<endl<<endl;
+		cout<<"1.Buat Data Pasien"<<endl;
+		cout<<"2.Cari dan Tampilkan Data Pasien"<<endl;
+		cout<<"3.Tambahkan Data Pasien"<<endl;
+		cout<<"4.Update Data Pasien"<<endl;
+		cout<<"5.Hapus Data Pasien"<<endl;
+		cout<<"00. Kembali"<<endl;
+		cout<<"0.Keluar Dari Program"<<endl<<endl;
+		cout<<"Masukkan Pilihan : ";
+		cin>>pilihan;
+		switch(pilihan){
+		case '1':{
+				{  ofstream f1("pasien.txt",ios::app);
+				for( i=0;pilihan!='n';i++){
+				if((pilihan=='y')||(pilihan=='Y')||(pilihan=='1')){
+				system("CLS");
+				cout<<"============================================="<<endl;
+ 				cout<<"			Buat Data Pasien "<<endl;
+ 				cout<<"============================================="<<endl;
+ 				cout<<"| No. | Nama Lengkap | No.Registrasi | Waktu Berkunjung |"<<endl;
+ 				
+ 				cout<<"---------------------------------------------------------------------"<<endl;
+ 				cout<<endl;
+ 				cout<<"No               : ";
+ 				cin>>pasienData.No;
+				cout<<"Nama Lengkap     : ";
+				cin>>pasienData.NamaLengkap;
+				cout<<"No. Registrasi   : ";
+				cin>>pasienData.Registrasi;
+				cout<<"Waktu berkunjung : ";		
+ 				cin>>pasienData.waktu;
+ 				f1<<pasienData.No<<pasienData.NamaLengkap<<pasienData.Registrasi<<pasienData.waktu<<endl;
+ 				cout<<"Apakah Anda ingin memasukkan data ? "<<endl;
+ 				cout<<"Ketik Y untuk melanjutkan dan N untuk selesai:  ";
+				cin>>pilihan;
+					}
+				} 
+				getch();
+				f1.close();
+			}
+			continue;
+
+			case'2':{
+				{  ifstream f2("pasien.txt"); 
+				system("CLS");
+				cout<<"=============================================="<<endl;
+				cout<<"Menampilkan Data Pasien"<<endl;
+				cout<<"===================================================="<<endl;
+				cout<<"Masukkan nama yang ingin ditampilkan ";
+				cin>>temukan;
+				cout<<endl;
+				int tidakDitemukan = 0;
+				for( j=0;(j<i)||(!f2.eof());j++){ 
+
+				getline(f2,pasienData.NamaLengkap);
+
+				if(pasienData.NamaLengkap==temukan){
+  				tidakDitemukan= 1;
+  				cout<<"No.               : "<<pasienData.No<<endl;
+  				cout<<"Nama Lengkap      : "<<pasienData.NamaLengkap<<endl;
+  				cout<<"No. Registrasi    : "<<pasienData.Registrasi<<endl;
+  				cout<<"Waktu Berkunjunng : "<<pasienData.waktu<<endl<<endl;
+ 				}
+
+			}
+
+
+				if(tidakDitemukan == 0){
+
+				cout<<"Data tidak ditemukan"<<endl;
+				}
+				f2.close();
+				cout<<"Ketik kata kunci lain untuk memproses";
+				getch();
+				getch();
+		}
+		continue;
+	
+		
+		case '3' :{
+			{  ofstream f1("pasien.txt",ios::app);
+				for( i=0;pilihan!='n';i++){
+				if((pilihan=='y')||(pilihan=='Y')||(pilihan=='1')){
+				system("CLS");
+				cout<<"============================================="<<endl;
+ 				cout<<"			Tambahkan Data Pasien "<<endl;
+ 				cout<<"============================================="<<endl;
+ 				cout<<endl;
+ 				cout<<"No               : ";
+ 				cin>>pasienData.No;
+				cout<<"Nama Lengkap     : ";
+				cin>>pasienData.NamaLengkap;
+				cout<<"No. Registrasi   : ";
+				cin>>pasienData.Registrasi;
+				cout<<"Waktu berkunjung : ";		
+ 				cin>>pasienData.waktu;
+ 				f1<<pasienData.No<<pasienData.NamaLengkap<<pasienData.Registrasi<<pasienData.waktu<<endl;
+ 				cout<<"Apakah Anda ingin memasukkan data ? "<<endl;
+ 				cout<<"Ketik Y untuk melanjutkan dan N untuk selesai:  ";
+				cin>>pilihan;
+					}
+				} 
+				f1.close();
+			}
+			
+		}
+		
+		case '4':{
+			
+  
+    return 0; 
+			break;
+		}
+
+		case '5':{
+				break;
+				}
+			}
+
+		break;
+	}
+	continue;    
+}
+
+	
+}
+}
+	case '2' : 
+	{
+		while(1)
+		{
+		system("cls");
+		cout<<"===================================="<<endl;
+		cout<<"Poli Bagian					"<<endl;
+		cout<<"===================================="<<endl<<endl;
+		cout<<"1.Buat Data Poli"<<endl;
+		cout<<"2.Cari dan Tampilkan Data Poli"<<endl;
+		cout<<"3.Tambahkan Data Poli"<<endl;
+		cout<<"4.Update Data Poli"<<endl;
+		cout<<"5.Hapus Data Poli"<<endl;
+		cout<<"00. Kembali"<<endl;
+		cout<<"0.Keluar Dari Program"<<endl<<endl;
+		cout<<"Masukkan Pilihan : ";
+		cin>>pilihan;
+		switch(pilihan){
+		case '1':{
+				{  ofstream f1("poli.txt",ios::app);
+				for( i=0;pilihan!='n';i++){
+				if((pilihan=='y')||(pilihan=='Y')||(pilihan=='1')){
+				system("CLS");
+				cout<<"============================================="<<endl;
+ 				cout<<"			Buat Data Poli "<<endl;
+ 				cout<<"============================================="<<endl;
+ 				cout<<"| No. | Nama Lengkap | No.Registrasi | Waktu Berkunjung |"<<endl;
+ 				
+ 				cout<<"---------------------------------------------------------------------"<<endl;
+ 				cout<<endl;
+ 				cout<<"No               : ";
+ 				cin>>pasienData.No;
+ 				cout<<"Dokter Poli";
+ 				cin>>poli[i].NamaDokter;
+				cout<<"Nama Lengkap     : ";
+				cin>>pasienData.NamaLengkap;
+				cout<<"No. Registrasi   : ";
+				cin>>pasienData.Registrasi;
+				cout<<"Waktu berkunjung : ";		
+ 				cin>>poli[i].Waktu;
+ 				f1<<pasienData.No<<poli[i].NamaDokter<<pasienData.NamaLengkap<<pasienData.Registrasi<<poli[i].Waktu<<endl;
+ 				cout<<"Apakah Anda ingin memasukkan data ? "<<endl;
+ 				cout<<"Ketik Y untuk melanjutkan dan N untuk selesai:  ";
+				cin>>pilihan;
+					}
+				} 
+				getch();
+				f1.close();
+			}
+			continue;
+
+			case'2':{
+				{  ifstream f2("poli.txt"); 
+				system("CLS");
+				cout<<"=============================================="<<endl;
+				cout<<"Menampilkan Data Poli"<<endl;
+				cout<<"===================================================="<<endl;
+				cout<<"Masukkan nama yang ingin ditampilkan ";
+				cin>>temukan;
+				cout<<endl;
+				int tidakDitemukan = 0;
+				for( j=0;(j<i)||(!f2.eof());j++){ 
+
+				getline(f2,poli[j].NamaPasien);
+
+				if(pasienData.NamaLengkap==temukan){
+  				tidakDitemukan= 1;
+  				cout<<"Nama Lengkap      : "<<poli[i].NamaPasien<<endl;
+  				cout<<"No. Registrasi    : "<<poli[i].Registrasi<<endl;
+  				cout<<"Waktu Berkunjunng : "<<poli[i].Waktu<<endl<<endl;
+ 				}
+
+			}
+
+
+				if(tidakDitemukan == 0){
+
+				cout<<"Data tidak ditemukan"<<endl;
+				}
+				f2.close();
+				cout<<"Ketik kata kunci lain untuk memproses";
+				getch();
+				getch();
+		}
+		continue;
+	
+		
+		case '3' :{
+			{  ofstream f1("poli.txt",ios::app);
+				for( i=0;pilihan!='n';i++){
+				if((pilihan=='y')||(pilihan=='Y')||(pilihan=='1')){
+				system("CLS");
+				cout<<"============================================="<<endl;
+ 				cout<<"			Tambahkan Data Poli "<<endl;
+ 				cout<<"============================================="<<endl;
+ 				cout<<endl;
+ 				cout<<"No               : ";
+ 				cin>>pasienData.No;
+				cout<<"Nama Lengkap     : ";
+				cin>>pasienData.NamaLengkap;
+				cout<<"No. Registrasi   : ";
+				cin>>pasienData.Registrasi;
+				cout<<"Waktu berkunjung : ";		
+ 				cin>>pasienData.waktu;
+ 				f1<<poli[i].NamaPasien<<poli[i].Registrasi<<poli[i].Waktu<<endl;
+ 				cout<<"Apakah Anda ingin memasukkan data ? "<<endl;
+ 				cout<<"Ketik Y untuk melanjutkan dan N untuk selesai:  ";
+				cin>>pilihan;
+					}
+				} 
+				f1.close();
+			}
+			
+		}
+		
+		case '4':{
+			
+  
+    return 0; 
+			break;
+		}
+
+		case '5':{
+				break;
+				}
+			}
+
+		break;
+	}
+	continue;
+	
+	
+	    
+}
+case '3' :{
+		int i,n;
+	  char ch;
+	  
+	  printf("   CUSTOMER BILLING SYSTEM:\n\n");
+	  printf("===============================\n");
+	  printf("\n1:    to add account on list\n");
+	  printf("2:    to search customer account\n");
+	  printf("3:    exit\n");
+	  printf("\n================================\n");
+	  do{
+	       printf("\nselect what do you want to do?");
+	       ch=getche();
+	  }while(ch<='0' || ch>'3');
+	  switch(ch){
+		case '1':
+		system("cls");
+			printf("\nhow many customer accounts?");
+			scanf("%d",&n);
+			for(i=0;i<n;i++){
+				input();
+				if(customer.payment>0)
+					customer.acct_type=(customer.payment<0.1*customer.oldbalance)? 'O': 'D';
+				else
+					customer.acct_type=(customer.oldbalance>0)?'D' : 'C';
+				customer.newbalance=customer.oldbalance - customer.payment;
+				writefile();
+			}
+			
+		case '2':
+			system("cls");
+			printf("search by what?\n");
+			printf("\n1 --- search by customer number\n");
+			printf("2 --- search by customer name\n");
+			search();
+			ch=getche();
+			main();
+		case '3':
+			break;
+			
+	  }
+		break;
+	}
+}
+}
+
+}
+}
+}
+void input()
+	{
+	  FILE *fp=fopen("bidur.dat","rb");
+	  fseek (fp,0,SEEK_END);
+	  tl=ftell(fp);
+	  sl=sizeof(customer);
+	  ts=tl/sl;
+	  fseek(fp,(ts-1)*sl,SEEK_SET);
+	  fread(&customer,sizeof(customer),1,fp);
+	  cout<<"\ncustomer no:%d\n"<<++customer.number<<endl;
+	  fclose(fp);
+	  cout<<"         Account number:"<<endl;
+	  cin>>customer.acct_no;
+	  cout<<"\n       Name:"<<endl;
+	  cout<<"%s"<<customer.name<<endl;
+	  cout<<"\n       mobile no:"<<endl;
+	  cout<<"%f"<<customer.mobile_no<<endl;
+	  cout<<"         Street:"<<endl;
+	  cin>>customer.street;
+	  printf("         City:");
+	  scanf("%s",customer.city);
+	  printf("         Previous balance:");
+	  scanf("%f",&customer.oldbalance);
+	  printf("         Current payment:");
+	  scanf("%f",&customer.payment);
+	  printf("         Payment date(mm/dd/yyyy):");
+	  scanf("%d/%d/%d",&customer.lastpayment.bulan,&customer.lastpayment.hari,&customer.lastpayment.tahun);
+	  
+   }
+
+   void writefile()
+   {
+	  FILE *fp;
+	  fp=fopen("bidur.dat","ab");
+	  fwrite(&customer,sizeof(customer),1,fp);
+	  fclose(fp);
+	  
+   }
+
+   void search()
+   {
+	 char ch;
+	 char nam[100];
+	 int n,i,m=1;
+	 FILE *fp;
+	 fp=fopen("bidur.dat","rb");
+	 do{
+		printf("\nenter your choice:");
+		ch=getche();
+	 }while(ch!='1' && ch!='2');
+	 switch(ch){
+	      case '1':
+		    fseek(fp,0,SEEK_END);
+		    tl=ftell(fp);
+		    sl=sizeof(customer);
+		    ts=tl/sl;
+		    do{
+			printf("\nchoose customer number:");
+			scanf("%d",&n);
+			if(n<=0 || n>ts)
+			printf("\nenter correct\n");
+			else{
+			    fseek(fp,(n-1)*sl,SEEK_SET);
+			    fread(&customer,sl,1,fp);
+			    output();
+			}
+			printf("\n\nagain?(y/n)");
+			ch=getche();
+		    }while(ch=='y');
+		    fclose(fp);
+		    break;
+	      case '2':
+		    fseek(fp,0,SEEK_END);
+		    tl=ftell(fp);
+		    sl=sizeof(customer);
+		    ts=tl/sl;
+		    fseek(fp,(ts-1)*sl,SEEK_SET);
+		    fread(&customer,sizeof(customer),1,fp);
+		    n=customer.number;
+
+		    do{
+			printf("\nenter the name:");
+			scanf("%s",nam);
+			fseek(fp,0,SEEK_SET);
+			for(i=1;i<=n;i++)
+			{
+			     fread(&customer,sizeof(customer),1,fp);
+			     if(strcmp(customer.name,nam)==0)
+			     {
+				output();
+				m=0;
+				break;
+			     }
+			}
+			if(m!=0)
+			cout<<"\n\ndoesn't exist\n"<<endl;
+			cout<<"\nanother?(y/n)"<<endl;
+			ch=getche();
+		    }while(ch=='y');
+		    fclose(fp);
+	      }
+	      
+	 }
+
+void output()
+	 {
+	   cout<<"\n\n    Customer no    :%d\n"<<customer.number<<endl;
+	   cout<<"    Name 	   :%s\n"<<customer.name<<endl;
+	   cout<<"    Mobile no      :%.f\n"<<customer.mobile_no<<endl;
+	   cout<<"    Account number :%d\n"<<customer.acct_no<<endl;
+	   cout<<"    Street         :%s\n"<<customer.street<<endl;
+	   cout<<"    City           :%s\n"<<customer.city<<endl;
+	   cout<<"    Old balance    :%.2f\n"<<customer.oldbalance<<endl;
+	   cout<<"    Current payment:%.2f\n"<<customer.payment<<endl;
+	   cout<<"    New balance    :%.2f\n"<<customer.newbalance<<endl;
+	   cout<<"    Payment date   :%d/%d/%d\n\n"<<customer.lastpayment.bulan<<customer.lastpayment.hari<<customer.lastpayment.tahun<<endl;
+	   cout<<"    Account status :"<<endl;
+	
+	   switch(customer.acct_type)
+	      {
+	      case 'C':
+		 cout<<"CURRENT\n\n"<<endl;
+		 break;
+	      case 'O':
+		 cout<<"OVERDUE\n\n"<<endl;
+		 break;
+	      case 'D':
+		 cout<<"DELINQUENT\n\n"<<endl;
+		 break;
+	      default:
+		 cout<<"ERROR\\n\n"<<endl;
+	      }
+	    
+	    
+	   }
+
